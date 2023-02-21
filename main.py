@@ -19,9 +19,11 @@ text_box = driver.find_element(By.XPATH, r'//*[@id="__next"]/div/div[1]/div/div/
 text_box.send_keys(f'carbon dioxide density at {pressure} bar {temperature} celsius degrees')
 click_box = driver.find_element(By.XPATH, r'//*[@id="__next"]/div/div[1]/div/div/div[1]/section/form/span/button')
 click_box.click()
-time.sleep(10)
+time.sleep(5)
 data_box = driver.find_element(By.CSS_SELECTOR, r'#__next > div > div._1MeJ._3eup > main > div._3BQG > div._2ThP > div._pA1m > section > section:nth-child(2) > div > div > img')
 time.sleep(5)
+read_data = data_box.get_attribute("alt")
+print(read_data)
 
 
 
