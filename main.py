@@ -19,9 +19,8 @@ text_box = driver.find_element(By.XPATH, r'//*[@id="__next"]/div/div[1]/div/div/
 text_box.send_keys(f'carbon dioxide density at {pressure} bar {temperature} celsius degrees')
 click_box = driver.find_element(By.XPATH, r'//*[@id="__next"]/div/div[1]/div/div/div[1]/section/form/span/button')
 click_box.click()
-time.sleep(5)
-data_box = driver.find_element(By.XPATH, r'//*[@id="__next"]/div/div[1]/main/div[2]/div[2]/div[2]/section/section[3]/div[1]/div/button/span')
-data_box.click()
+time.sleep(10)
+data_box = driver.find_element(By.CSS_SELECTOR, r'#__next > div > div._1MeJ._3eup > main > div._3BQG > div._2ThP > div._pA1m > section > section:nth-child(2) > div > div > img')
 time.sleep(5)
 
 
