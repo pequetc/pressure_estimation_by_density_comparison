@@ -22,6 +22,16 @@ def convert_density(str):
     return float(list[0])
 
 
+def next_step_density():
+    global init_pressure, init_temperature, init_density, reference_density
+    if init_density < reference_density:
+        init_pressure += 5
+    elif init_density > reference_density:
+        init_pressure -= 5
+    return get_density(init_pressure, init_temperature)
+
+
+
 print("Please enter the final parameters of chemical process (pressure and temperature)")
 print("First enter pressure in bar")
 pressure = input()
@@ -43,11 +53,7 @@ cond = "y"
 while cond:
     # initial loop to get near desired values of pressure
     while init_density < 0.8 * reference_density or init_density > 1.2 * reference_density:
-        if init_density < reference_density:
-            init_pressure += 5
-        elif init_density > reference_density:
-            init_pressure -= 5
-        init_density = get_density(init_pressure, init_temperature)
+        init_density = next_step_density()
 
     print(f"Found value of density is now {init_density} at {init_pressure} bar")
     print(f"Program is trying to find pressure at which density is {reference_density}")
@@ -55,11 +61,7 @@ while cond:
     cond = input()
     if not cond:
         break
-    if init_density < reference_density:
-        init_pressure += 5
-    elif init_density > reference_density:
-        init_pressure -= 5
-    init_density = get_density(init_pressure, init_temperature)
+    init_density = next_step_density()
 
 print(f"The found value of pressure is {init_pressure} bar at which the density is {init_density}, which was selected "
       f"by user as close enough to desired value of {reference_density}")
