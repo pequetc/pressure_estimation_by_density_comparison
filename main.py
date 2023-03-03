@@ -50,7 +50,7 @@ print(f"The search for desired density will start from {init_pressure} bar with 
 cond = "y"
 while cond:
     # initial loop to get near desired values of pressure
-    while init_density < 0.8 * reference_density or init_density > 1.2 * reference_density:
+    while init_density < 0.5 * reference_density or init_density > 1.5 * reference_density:
         init_density = next_step_density()
 
     print(f"Found value of density is now {init_density} at {init_pressure} bar")
